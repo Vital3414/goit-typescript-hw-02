@@ -7,14 +7,23 @@ import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import SearchBar from "./components/SearchBar/SearchBar";
 import ImageModal from "./components/ImageModal/ImageModal";
 
+interface ImageItem {
+  id: string;
+  urls: {
+    small: string;
+    regular: string;
+  };
+  alt_description: string;
+}
+
 const App = () => {
-  const [photos, setPhotos] = useState([]);
+  const [photos, setPhotos] = useState<ImageItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
 
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -41,7 +50,7 @@ const App = () => {
     setPage((prev) => prev + 1);
   };
 
-  const handleChangeQuery = (newQuery) => {
+  const handleChangeQuery = (newQuery: string) => {
     if (newQuery === query) {
       return;
     }
@@ -50,7 +59,7 @@ const App = () => {
     setPage(1);
   };
 
-  const handleClickImage = (imageUrl) => {
+  const handleClickImage = (imageUrl: string) => {
     setSelectedImage(imageUrl);
     setIsModalOpen(true);
   };

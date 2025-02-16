@@ -5,12 +5,7 @@ import s from "./Loader.module.css";
 const Loader: React.FC = () => {
   return (
     <div className={s.loader}>
-      <FallingLines
-        color="#4fa94d"
-        width="100"
-        visible={true}
-        ariaLabel="falling-circles-loading"
-      />
+      <FallingLines color="#4fa94d" width="100" visible={true} />
     </div>
   );
 };
